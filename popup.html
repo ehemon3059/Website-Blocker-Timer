@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Blocker & Timer</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 350px;
+      padding: 15px;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #444;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="password"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .radio-options {
+      margin: 10px 0;
+    }
+    .radio-label {
+      margin-right: 15px;
+    }
+    #timeInputContainer, #passwordInputContainer {
+      margin-top: 10px;
+      display: none;
+    }
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #3367d6;
+    }
+    .website-list {
+      margin-top: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .website-item {
+      border: 1px solid #eee;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      position: relative;
+    }
+    .website-url {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .website-type {
+      color: #666;
+      font-size: 13px;
+    }
+    .time-remaining {
+      font-size: 13px;
+      color: #4285f4;
+    }
+    .delete-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: none;
+      border: none;
+      color: #d93025;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+    }
+    .password-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 300px;
+    }
+    .modal-title {
+      margin-top: 0;
+      color: #444;
+    }
+    .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 15px;
+    }
+    .modal-buttons button {
+      margin-left: 10px;
+    }
+    .cancel-btn {
+      background-color: #f1f1f1;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Blocker & Timer</h1>
+  
+  <div class="form-group">
+    <label for="websiteUrl">Website URL:</label>
+    <input type="text" id="websiteUrl" placeholder="Enter website URL (e.g., facebook.com)">
+  </div>
+  
+  <div class="radio-options">
+    <label class="radio-label">
+      <input type="radio" name="blockType" value="block" checked> Block
+    </label>
+    <label class="radio-label">
+      <input type="radio" name="blockType" value="timeLimit"> Time Limit
+    </label>
+  </div>
+  
+  <div id="passwordInputContainer">
+    <label for="blockPassword">Set Password:</label>
+    <input type="password" id="blockPassword" placeholder="Password to unblock">
+  </div>
+  
+  <div id="timeInputContainer">
+    <label for="timeLimit">Time Limit (minutes):</label>
+    <input type="number" id="timeLimit" min="1" value="30">
+  </div>
+  
+  <button id="addWebsite">Add Website</button>
+  
+  <div class="website-list" id="websiteList">
+    <!-- Website items will be added here dynamically -->
+  </div>
+
+  <!-- Password verification modal -->
+  <div class="password-modal" id="passwordModal">
+    <div class="modal-content">
+      <h3 class="modal-title">Enter Password</h3>
+      <p>Enter the password to unblock this website:</p>
+      <input type="password" id="verifyPassword" placeholder="Enter password">
+      <div class="modal-buttons">
+        <button class="cancel-btn" id="cancelPassword">Cancel</button>
+        <button id="confirmPassword">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

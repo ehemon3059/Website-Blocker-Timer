@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Limit Reached</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 500px;
+    }
+    h1 {
+      color: #f4b400;
+      margin-top: 0;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #5f6368;
+    }
+    .icon {
+      font-size: 60px;
+      color: #f4b400;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">⏱️</div>
+    <h1>Time Limit Reached</h1>
+    <p>You've reached the time limit set for this website.</p>
+    <p>You can manage your time limits by clicking on the extension icon in your browser toolbar.</p>
+    <button id="goBack">Go Back</button>
+  </div>
+  
+  <script>
+    document.getElementById('goBack').addEventListener('click', function() {
+      history.back();
+    });
+  </script>
+</body>
+</html>
